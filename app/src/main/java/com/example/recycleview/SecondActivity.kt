@@ -10,7 +10,7 @@ class SecondActivity : AppCompatActivity() {
     lateinit var images: CircleImageView
     lateinit var Name: TextView
     lateinit var Number: TextView
-    //lateinit var Location: TextView
+    lateinit var location: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
@@ -18,7 +18,7 @@ class SecondActivity : AppCompatActivity() {
         images = findViewById(R.id.Image)
         Name = findViewById(R.id.Name)
         Number = findViewById(R.id.Number)
-        //Location = findViewById(R.id.Location)
+        location = findViewById(R.id.location)
 
         getData()
 
@@ -26,14 +26,14 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun getData() {
-        Name.text = intent.getStringExtra("name")
-
+        val name = intent.getStringExtra("name")
+        Name.text = "Name: "+name
         val imageUrl = intent.getStringExtra("profile")
         Glide.with(this).load(imageUrl).into(images)
-
-        Number.text = intent.getStringExtra("number")
-
-        //Location.text = intent.getStringExtra("location")
+        val number = intent.getStringExtra("number")
+        Number.text = "Number: "+number
+        val Location = intent.getStringExtra("location")
+        location.text = "Location: "+Location
 
     }
 }
